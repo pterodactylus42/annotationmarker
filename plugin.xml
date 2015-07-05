@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<!-- Defines my own custom marker, use the marker view panel to see them when they are created-->
+<extension point="org.eclipse.core.resources.markers"
+        id="com.ibm.mymarkers.mymarker"
+        name="My Marker">
+        <super type="org.eclipse.core.resources.marker"/>
+        <persistent value="false"/>
+        <attribute name="description"/>
+    </extension>
+    
+<!-- Popup menu to add a menu to right click of a java file in the text editor--> 
+<extension point="org.eclipse.ui.popupMenus"> 
+	   	<viewerContribution 
+	      	id="org.eclipse.ui.articles.action.contribution.popup.navigator"
+	   		targetID="#CompilationUnitEditorContext"> 
+	      	<action
+	            class="com.ibm.example.mymarker.CreateMarkerAction"
+	            id="com.ibm.example.create.marker"
+	            label="Create Marker"
+	            menubarPath="additions">
+	      	</action>
+	      	
+	      	<action
+	            class="com.ibm.example.mymarker.CountMarkersForFile"
+	            id="com.ibm.example.filecount.marker"
+	            label="Count Markers"
+	            menubarPath="additions">
+	      	</action> 
+	   	</viewerContribution>
+	</extension>
+	
+<!-- Popup menu to add a menu to right click of a java file in the package explorer--> 	
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution id="Clarity.objectContribution2"
+	 		objectClass="org.eclipse.jdt.core.IOpenable">
+         	<action
+               label="Count Markers"
+               class="com.ibm.example.mymarker.CountMarkersForFiles"
+               menubarPath="additions"
+               id="com.ibm.example.foldercount.marker">
+         	</action>
+		</objectContribution>
+	</extension>
+</plugin>
