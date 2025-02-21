@@ -44,12 +44,13 @@ public class MyMarkerFactory {
 	ASTNode createAST = parser.createAST(null);
 	CompilationUnit javaSource = (CompilationUnit) createAST;
 	javaSource.accept(new ASTVisitor() {
-	        public boolean visit(MethodInvocation methodInvocation)
-	        {
-	            String methodName = methodInvocation.getName().toString();
-	            asdsf(methodInvocation);
-	            return false;
-	        }
+			@Override
+			public boolean visit(MethodDeclaration methodDeclaration) {
+				String methodName = methodDeclaration.getName().toString();
+				System.out.println("ASTVisitor.visit " + methodName);
+				asdsf(methodDeclaration);
+				return false;
+			}
 	    });
 
 	IMarker marker = null;
@@ -63,7 +64,7 @@ public class MyMarkerFactory {
 	return marker;
     }
     
-    private static void asdsf(MethodInvocation node) {
+    private static void asdsf(MethodDeclaration node) {
 	IMethodBinding binding = (IMethodBinding) node.getName().resolveBinding();
 	ICompilationUnit unit = (ICompilationUnit) binding.getJavaElement().getAncestor( IJavaElement.COMPILATION_UNIT );
 	if ( unit == null ) {
