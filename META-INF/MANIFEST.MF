@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: MyMarker Plug-in
-Bundle-SymbolicName: MyMarker; singleton:=true
+Bundle-Name: annotationmarker
+Bundle-SymbolicName: annotationmarker;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: com.ibm.example.mymarker.MyMarkerPlugin
 Require-Bundle: org.eclipse.ui,
@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt,
  org.eclipse.jdt.core,
  org.eclipse.jdt.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-23
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
  org.eclipse.jdt.core,
